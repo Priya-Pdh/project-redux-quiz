@@ -2,35 +2,41 @@ import { createSlice } from "@reduxjs/toolkit";
 
 // Change these to your own questions!
 const questions = [
-  {
-    "question": "What is the main ingredient in guacamole?",
-    "options": ["Tomatoes", "Avocado", "Onions", "Pineapple"],
-    "correctAnswer": "Avocado"
+  { 
+    id: 1,
+    questionText: "What is the main ingredient in guacamole?",
+    options: ["Tomatoes", "Avocado", "Onions", "Pineapple"],
+    correctAnswerIndex: 1
+  },
+  { 
+    id: 2,
+    questionText: "What is the key ingredient in the dish 'paella'?",
+    options: ["Chicken", "Beef", "Rice", "Pasta"],
+    correctAnswerIndex: 2
   },
   {
-    "question": "What is the key ingredient in the dish 'paella'?",
-    "options": ["Chicken", "Beef", "Rice", "Pasta"],
-    "correctAnswer": "Rice"
+    id: 3,
+    questionText: "Which fruit is known as the 'king of fruits' and has a strong odor?",
+    options: ["Durian", "Mango", "Banana", "Papaya"],
+    correctAnswerIndex: 0
   },
   {
-    "question": "Which fruit is known as the 'king of fruits' and has a strong odor?",
-    "options": ["Durian", "Mango", "Banana", "Papaya"],
-    "correctAnswer": "Durian"
+    id: 4,
+    questionText: "In which country did the sandwich originate?",
+    options: ["France", "Italy", "England", "United States"],
+    correctAnswerIndex: 2
   },
   {
-    "question": "In which country did the sandwich originate?",
-    "options": ["France", "Italy", "England", "United States"],
-    "correctAnswer": "England"
+    id: 5,
+    questionText: "What is the main ingredient in the Indian dish 'samosa'?",
+    options: ["Potato", "Chicken", "Lamb", "Spinach"],
+    correctAnswerIndex: 0
   },
   {
-    "question": "What is the main ingredient in the Indian dish 'samosa'?",
-    "options": ["Potato", "Chicken", "Lamb", "Spinach"],
-    "correctAnswer": "Potato"
-  },
-  {
-    "question": "Which spice is known as 'black gold' and is native to the Maluku Islands?",
-    "options": ["Cinnamon", "Turmeric", "Nutmeg", "Saffron"],
-    "correctAnswer": "Nutmeg"
+    id: 6,
+    questionText: "Which spice is known as 'black gold' and is native to the Maluku Islands?",
+    options: ["Cinnamon", "Turmeric", "Nutmeg", "Saffron"],
+    correctAnswerIndex: 2
   },
 ];
 

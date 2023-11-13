@@ -3,19 +3,38 @@ import { createSlice } from "@reduxjs/toolkit";
 // Change these to your own questions!
 const questions = [
   {
-    id: 1,
-    questionText: "Who set the Olympic record for the 100m dash in 2012?",
-    options: ["Usain Bolt", "Justin Gatlin", "Tyson Gay", "Asafa Powell"],
-    correctAnswerIndex: 0
+    "question": "What is the main ingredient in guacamole?",
+    "options": ["Tomatoes", "Avocado", "Onions", "Pineapple"],
+    "correctAnswer": "Avocado"
   },
   {
-    id: 2,
-    questionText:
-      "When was Michael Phelps last named male World Swimmer of the Year?",
-    options: ["2012", "2014", "2016", "2018"],
-    correctAnswerIndex: 2
-  }
+    "question": "What is the key ingredient in the dish 'paella'?",
+    "options": ["Chicken", "Beef", "Rice", "Pasta"],
+    "correctAnswer": "Rice"
+  },
+  {
+    "question": "Which fruit is known as the 'king of fruits' and has a strong odor?",
+    "options": ["Durian", "Mango", "Banana", "Papaya"],
+    "correctAnswer": "Durian"
+  },
+  {
+    "question": "In which country did the sandwich originate?",
+    "options": ["France", "Italy", "England", "United States"],
+    "correctAnswer": "England"
+  },
+  {
+    "question": "What is the main ingredient in the Indian dish 'samosa'?",
+    "options": ["Potato", "Chicken", "Lamb", "Spinach"],
+    "correctAnswer": "Potato"
+  },
+  {
+    "question": "Which spice is known as 'black gold' and is native to the Maluku Islands?",
+    "options": ["Cinnamon", "Turmeric", "Nutmeg", "Saffron"],
+    "correctAnswer": "Nutmeg"
+  },
 ];
+
+
 
 const initialState = {
   questions,

@@ -1,7 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
-import { submitAnswer, goToNextQuestion } from "../../reducers/quiz";
+import { quiz, submitAnswer, goToNextQuestion } from "../../reducers/quiz";
 import ProgressBar from "../ProgressBar/ProgressBar";
+import tacoImg from "../../assets/taco.png";
 
 import "./QuestionContainer.css";
 
@@ -50,7 +51,7 @@ const QuestionContainer = () => {
         navigate("/summary");
       } else {
         // If not, go to the next question
-        dispatch(quiz.actions.goToNextQuestion());
+        dispatch(quiz.actions.oToNextQuestion());
         setAnswer(null);
       }
     }
@@ -58,43 +59,38 @@ const QuestionContainer = () => {
 
   return (
     <>
-      <ProgressBar
-        currentQuestionIndex={currentQuestionIndex}
-        quizLength={quizLength}
-      />
       {quizOver ? (
         <SummaryPage />
       ) : (
         <>
-          <div>
-            <h3>{currentQuestion.questionText}</h3>
-            <h4>
-              {quizLength - currentQuestionIndex}{" "}
-              {quizLength - currentQuestionIndex === 1
-                ? "question"
-                : "questions"}{" "}
-              left
-            </h4>
-
-            {currentQuestion.options.map((option, index) => (
-              <button
-                type="button"
-                key={option}
-                onClick={() => handleClick(index)}
-                value={index}
-                className={
-                  answer === index
-                    ? index === correctAnswer
-                      ? "correct-answer"
-                      : "wrong-answer"
-                    : ""
-                }
-              >
-                {option}
-              </button>
-            ))}
-
-            <button onClick={handleAnswerSubmit}>submit</button>
+          <div className="container">
+            <h1>{currentQuestion.questionText}</h1>
+            <div className="answer-buttons">
+              {currentQuestion.options.map((option, index) => (
+                <button
+                  type="button"
+                  onClick={() => handleClick(index)}
+                  value={index}
+                  className={
+                    answer === index
+                      ? index === correctAnswer
+                        ? "correct-answer"
+                        : "wrong-answer"
+                      : ""
+                  }
+                >
+                  {option}
+                </button>
+              ))}
+            </div>
+            <button className="submit-button" onClick={handleAnswerSubmit}>
+              submit
+            </button>
+            <ProgressBar
+              currentQuestionIndex={currentQuestionIndex}
+              quizLength={quizLength}
+            />
+            <img src={tacoImg} alt="taco" />
           </div>
         </>
       )}

@@ -1,0 +1,16 @@
+.progress-bar {
+  display: flex;
+}
+
+.progress-bar h4 {
+  margin: 0 0 0 20px;
+  font-family: "Nunito", sans-serif;
+  font-family: 500;
+}
+
+.progress-bar-style {
+  width: 30rem;
+  background-color: #fff;
+  border: 1px solid #ecdfd2;
+  border-radius: 10px;
+}

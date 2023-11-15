@@ -6,7 +6,6 @@ import "./QuestionContainer.css"
 
 const QuestionContainer = () => {
   const [answer, setAnswer] = useState(null);
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
 
   const dispatch = useDispatch();
 
@@ -20,11 +19,10 @@ const QuestionContainer = () => {
 
   const correctAnswer = currentQuestion.correctAnswerIndex;
 
-  const handleClick = (e) => {
-    const selectedOption = parseInt(e.target.value);
-    setSelectedAnswer(selectedOption);
+  const handleClick = (selectedAnswerIndex) => {
+    setAnswer(selectedAnswerIndex);
 
-    if (selectedOption === correctAnswer) {
+    if (selectedAnswerIndex === correctAnswer) {
       console.log("right answer", correctAnswer)
     } else {
       console.log("wrong answer, right answer is", correctAnswer)
@@ -35,7 +33,7 @@ const QuestionContainer = () => {
 
   const handleNext = () => {
     dispatch(quiz.actions.goToNextQuestion());
-    setSelectedAnswer(null);
+    setAnswer(null);
   };
   return (
     <>
@@ -55,10 +53,10 @@ const QuestionContainer = () => {
           <button
             type="button"
             key={option}
-            onClick={handleClick}
+            onClick={() => handleClick(index)}
             value={index}
             className={
-              selectedAnswer === index
+              answer === index
                 ? index === correctAnswer
                   ? "correct-answer"
                   : "wrong-answer"

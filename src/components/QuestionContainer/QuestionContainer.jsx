@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useState } from "react";
-import { quiz, submitAnswer, goToNextQuestion } from "../../reducers/quiz";
+import { useEffect, useState } from "react";
+import { quiz, submitAnswer } from "../../reducers/quiz";
+
 import ProgressBar from "../ProgressBar/ProgressBar";
 import tacoImg from "../../assets/taco.png";
 
@@ -11,6 +12,8 @@ import { useNavigate } from "react-router-dom";
 
 const QuestionContainer = () => {
   const [answer, setAnswer] = useState(null);
+  const [answerSelected, setAnswerSelected] = useState(false);
+  const [correctAnswerClass, setCorrectAnswerClass] = useState("");
 
   const dispatch = useDispatch();
 
@@ -29,7 +32,13 @@ const QuestionContainer = () => {
   const correctAnswer = currentQuestion.correctAnswerIndex;
 
   const handleClick = (selectedAnswerIndex) => {
-    setAnswer(selectedAnswerIndex);
+    if (!answerSelected) {
+      setAnswer(selectedAnswerIndex);
+      setAnswerSelected(true);
+      setCorrectAnswerClass(
+        selectedAnswerIndex === correctAnswer ? "corrected-answer" : ""
+      );
+    }
 
     if (selectedAnswerIndex === correctAnswer) {
       console.log("right answer", correctAnswer);
@@ -37,6 +46,12 @@ const QuestionContainer = () => {
       console.log("wrong answer, right answer is", correctAnswer);
     }
   };
+
+  useEffect(() => {
+    setCorrectAnswerClass(
+      answerSelected && answer !== correctAnswer ? "corrected-answer" : ""
+    );
+  }, [answerSelected]);
 
   const handleAnswerSubmit = () => {
     if (answer !== null) {
@@ -51,8 +66,9 @@ const QuestionContainer = () => {
         navigate("/summary");
       } else {
         // If not, go to the next question
-        dispatch(quiz.actions.oToNextQuestion());
+        dispatch(quiz.actions.goToNextQuestion());
         setAnswer(null);
+        setAnswerSelected(false);
       }
     }
   };
@@ -69,15 +85,24 @@ const QuestionContainer = () => {
               {currentQuestion.options.map((option, index) => (
                 <button
                   type="button"
+                  key={option}
                   onClick={() => handleClick(index)}
                   value={index}
-                  className={
-                    answer === index
-                      ? index === correctAnswer
-                        ? "correct-answer"
-                        : "wrong-answer"
-                      : ""
-                  }
+                  className={`
+                ${
+                  answer === index
+                    ? index === correctAnswer
+                      ? "correct-answer"
+                      : "wrong-answer"
+                    : ""
+                }
+                ${
+                  answerSelected && index === correctAnswer
+                    ? correctAnswerClass
+                    : ""
+                }
+              `}
+                  disabled={answerSelected}
                 >
                   {option}
                 </button>

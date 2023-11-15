@@ -6,7 +6,12 @@
 .correct-answer {
   background-color: inherit;
   animation: correct 1s forwards;
-  /* animation-delay: 2s; */
+}
+
+.corrected-answer {
+  background-color: inherit;
+  animation: correct 1s forwards;
+  animation-delay: 1s;
 }
 
 .container {

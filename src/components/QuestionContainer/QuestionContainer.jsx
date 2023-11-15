@@ -2,6 +2,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { submitAnswer, goToNextQuestion } from "../../reducers/quiz";
 import ProgressBar from "../ProgressBar/ProgressBar";
+
+import "./QuestionContainer.css";
+
 import { SummaryPage } from "../../Page/SummaryPage/SummaryPage";
 import { useNavigate } from "react-router-dom";
 
@@ -24,25 +27,16 @@ const QuestionContainer = () => {
 
   const correctAnswer = currentQuestion.correctAnswerIndex;
 
-  const handleClick = (e) => {
-    const selectedAnswerIndex = parseInt(e.target.value);
-    console.log(
-      "CorrectIndex:",
-      correctAnswer,
-      "SelectedIndex:",
-      selectedAnswerIndex
-    );
+  const handleClick = (selectedAnswerIndex) => {
     setAnswer(selectedAnswerIndex);
-    if (correctAnswer === selectedAnswerIndex) {
-      console.log("Green");
+
+    if (selectedAnswerIndex === correctAnswer) {
+      console.log("right answer", correctAnswer);
     } else {
-      console.log("Red");
+      console.log("wrong answer, right answer is", correctAnswer);
     }
   };
 
-  // const handleNext = () => {
-  //   dispatch(quiz.actions.goToNextQuestion());
-  // };
   const handleAnswerSubmit = () => {
     if (answer !== null) {
       dispatch(
@@ -56,7 +50,8 @@ const QuestionContainer = () => {
         navigate("/summary");
       } else {
         // If not, go to the next question
-        dispatch(goToNextQuestion());
+        dispatch(quiz.actions.goToNextQuestion());
+        setAnswer(null);
       }
     }
   };
@@ -80,16 +75,25 @@ const QuestionContainer = () => {
                 : "questions"}{" "}
               left
             </h4>
-            <div size={currentQuestion.options.length}>
-              {currentQuestion.options.map((option, index) => (
-                <button
-                  key={index}
-                  onClick={() => handleClick({ target: { value: index } })}
-                >
-                  {option}
-                </button>
-              ))}
-            </div>
+
+            {currentQuestion.options.map((option, index) => (
+              <button
+                type="button"
+                key={option}
+                onClick={() => handleClick(index)}
+                value={index}
+                className={
+                  answer === index
+                    ? index === correctAnswer
+                      ? "correct-answer"
+                      : "wrong-answer"
+                    : ""
+                }
+              >
+                {option}
+              </button>
+            ))}
+
             <button onClick={handleAnswerSubmit}>submit</button>
           </div>
         </>

@@ -2,7 +2,7 @@ import React from "react";
 import { Provider } from "react-redux";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { quiz } from "./reducers/quiz";
-
+import { SummaryPage } from './Page/SummaryPage/SummaryPage';
 // import { CurrentQuestion } from "./components/CurrentQuestion";
 import QuestionContainer from "./components/QuestionContainer/QuestionContainer";
 
@@ -17,6 +17,7 @@ export const App = () => {
     <Provider store={store}>
       {/* <CurrentQuestion /> */}
       <QuestionContainer />
+     <SummaryPage />
     </Provider>
   );
 };

@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { restart } from "../../reducers/quiz";
 import { useNavigate } from "react-router-dom";
+import { AnswersSummary } from "../../components/AnswersSummary/AnswersSummary";
 
 export const SummaryPage = () => {
   const dispatch = useDispatch();
@@ -8,7 +9,6 @@ export const SummaryPage = () => {
   const navigate = useNavigate();
 
   let score = 0;
-  const loseScore = -1;
   //calculate the score, if correct +1 and if incorrect -1
   answers.forEach((answer) => {
     if (answer.isCorrect) {
@@ -17,6 +17,7 @@ export const SummaryPage = () => {
       score -= 1;
     }
   });
+ 
 
   const handleReload = () => {
     dispatch(restart());
@@ -30,7 +31,8 @@ export const SummaryPage = () => {
       </p>  
       {score === answers.length && <p>You Won! Congratulation 🥳</p>}
       {score >= 1 && score <= 4 && <p>Not Bad! Well done 👏</p>}
-      {score <= 0 && loseScore && <p>You lost! Try again. </p>}
+      {score <= 0 && <p>You lost! Try again. </p>}
+      {<AnswersSummary />}
       <button onClick={handleReload}>Restart Quiz</button>
     </div>
   );

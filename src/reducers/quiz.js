@@ -120,3 +120,6 @@ export const quiz = createSlice({
     }
   }
 });
+
+export const { submitAnswer, goToNextQuestion, restart } = quiz.actions;
+export default quiz.reducer;

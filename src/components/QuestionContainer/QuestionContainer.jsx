@@ -2,9 +2,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { quiz } from "../../reducers/quiz";
 import ProgressBar from "../ProgressBar/ProgressBar";
+import "./QuestionContainer.css"
 
 const QuestionContainer = () => {
   const [answer, setAnswer] = useState(null);
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
 
   const dispatch = useDispatch();
 
@@ -19,17 +21,21 @@ const QuestionContainer = () => {
   const correctAnswer = currentQuestion.correctAnswerIndex;
 
   const handleClick = (e) => {
-    console.log(correctAnswer, e.target.value);
-    if (correctAnswer == e.target.value) {
-      console.log("Green");
+    const selectedOption = parseInt(e.target.value);
+    setSelectedAnswer(selectedOption);
+
+    if (selectedOption === correctAnswer) {
+      console.log("right answer", correctAnswer)
     } else {
-      console.log("Red");
+      console.log("wrong answer, right answer is", correctAnswer)
     }
-    setAnswer(correctAnswer);
-  };
+  }
+
+
 
   const handleNext = () => {
     dispatch(quiz.actions.goToNextQuestion());
+    setSelectedAnswer(null);
   };
   return (
     <>
@@ -44,18 +50,26 @@ const QuestionContainer = () => {
           {quizLength - currentQuestionIndex === 1 ? "question" : "questions"}{" "}
           left
         </h4>
-        <select size={currentQuestion.options.length} onClick={handleClick}>
-          {currentQuestion.options.map((option, index) => (
-            <option
-              value={index}
-              key={index}
-              //   disabled={answer !== null && answer !== index}
-            >
-              {option}
-            </option>
-          ))}
-        </select>
-      </div>
+
+        {currentQuestion.options.map((option, index) => (
+          <button
+            type="button"
+            key={option}
+            onClick={handleClick}
+            value={index}
+            className={
+              selectedAnswer === index
+                ? index === correctAnswer
+                  ? "correct-answer"
+                  : "wrong-answer"
+                : ""
+            }
+          >{option}</button>
+        )
+        )}
+
+
+      </div >
       <button onClick={handleNext}>Next</button>
     </>
   );

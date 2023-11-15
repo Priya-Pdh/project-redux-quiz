@@ -40,10 +40,6 @@ const QuestionContainer = () => {
 
   }
 
-
-  // const handleNext = () => {
-  //   dispatch(quiz.actions.goToNextQuestion());
-  // };
   const handleAnswerSubmit = () => {
     if (answer !== null) {
       dispatch(
@@ -82,37 +78,26 @@ const QuestionContainer = () => {
                 : "questions"}{" "}
               left
             </h4>
-            {/* <select size={currentQuestion.options.length} onClick={handleClick}>
-              {currentQuestion.options.map((option, index) => (
-                <option
-                  value={index}
-                  key={index}
-                  //   disabled={answer !== null && answer !== index}
-                >
-                  {option}
-                </option>
-              ))}
-            </select> */}
-        {/*<div size={currentQuestion.options.length}>*/}
+
             {currentQuestion.options.map((option, index) => (
               <button
-            type="button"
-            key={option}
-            onClick={() => handleClick(index)}
-            value={index}
-            className={
-              answer === index
-                ? index === correctAnswer
-                  ? "correct-answer"
-                  : "wrong-answer"
-                : ""
-            }
-          >{option}</button>
+                type="button"
+                key={option}
+                onClick={() => handleClick(index)}
+                value={index}
+                className={
+                  answer === index
+                    ? index === correctAnswer
+                      ? "correct-answer"
+                      : "wrong-answer"
+                    : ""
+                }
+              >{option}</button>
             ))}
-            {/*</div>*/}
-          <button onClick={handleAnswerSubmit}>submit</button>
+
+            <button onClick={handleAnswerSubmit}>submit</button>
           </div>
-          
+
         </>
       )}
     </>

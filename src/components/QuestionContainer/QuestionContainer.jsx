@@ -1,13 +1,14 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { quiz, submitAnswer } from "../../reducers/quiz";
-import ProgressBar from "../ProgressBar/ProgressBar";
 
-import "./QuestionContainer.css"
+import ProgressBar from "../ProgressBar/ProgressBar";
+import tacoImg from "../../assets/taco.png";
+
+import "./QuestionContainer.css";
 
 import { SummaryPage } from "../../Page/SummaryPage/SummaryPage";
 import { useNavigate } from "react-router-dom";
-
 
 const QuestionContainer = () => {
   const [answer, setAnswer] = useState(null);
@@ -30,24 +31,26 @@ const QuestionContainer = () => {
 
   const correctAnswer = currentQuestion.correctAnswerIndex;
 
-
   const handleClick = (selectedAnswerIndex) => {
     if (!answerSelected) {
       setAnswer(selectedAnswerIndex);
       setAnswerSelected(true);
-      setCorrectAnswerClass(selectedAnswerIndex === correctAnswer ? "corrected-answer" : "");
+      setCorrectAnswerClass(
+        selectedAnswerIndex === correctAnswer ? "corrected-answer" : ""
+      );
     }
 
     if (selectedAnswerIndex === correctAnswer) {
-      console.log("right answer", correctAnswer)
+      console.log("right answer", correctAnswer);
     } else {
-      console.log("wrong answer, right answer is", correctAnswer)
+      console.log("wrong answer, right answer is", correctAnswer);
     }
-
-  }
+  };
 
   useEffect(() => {
-    setCorrectAnswerClass(answerSelected && answer !== correctAnswer ? "corrected-answer" : "");
+    setCorrectAnswerClass(
+      answerSelected && answer !== correctAnswer ? "corrected-answer" : ""
+    );
   }, [answerSelected]);
 
   const handleAnswerSubmit = () => {
@@ -72,41 +75,48 @@ const QuestionContainer = () => {
 
   return (
     <>
-      <ProgressBar
-        currentQuestionIndex={currentQuestionIndex}
-        quizLength={quizLength}
-      />
       {quizOver ? (
         <SummaryPage />
       ) : (
         <>
-          <div>
-            <h3>{currentQuestion.questionText}</h3>
-            <h4>
-              {quizLength - currentQuestionIndex}{" "}
-              {quizLength - currentQuestionIndex === 1
-                ? "question"
-                : "questions"}{" "}
-              left
-            </h4>
-
-            {currentQuestion.options.map((option, index) => (
-              <button
-                type="button"
-                key={option}
-                onClick={() => handleClick(index)}
-                value={index}
-                className={`
-                ${answer === index ? (index === correctAnswer ? "correct-answer" : "wrong-answer") : ""}
-                ${answerSelected && index === correctAnswer ? correctAnswerClass : ""}
+          <div className="container">
+            <h1>{currentQuestion.questionText}</h1>
+            <div className="answer-buttons">
+              {currentQuestion.options.map((option, index) => (
+                <button
+                  type="button"
+                  key={option}
+                  onClick={() => handleClick(index)}
+                  value={index}
+                  className={`
+                ${
+                  answer === index
+                    ? index === correctAnswer
+                      ? "correct-answer"
+                      : "wrong-answer"
+                    : ""
+                }
+                ${
+                  answerSelected && index === correctAnswer
+                    ? correctAnswerClass
+                    : ""
+                }
               `}
-                disabled={answerSelected}
-              >{option}</button>
-            ))}
-
-            <button onClick={handleAnswerSubmit}>submit</button>
+                  disabled={answerSelected}
+                >
+                  {option}
+                </button>
+              ))}
+            </div>
+            <button className="submit-button" onClick={handleAnswerSubmit}>
+              submit
+            </button>
+            <ProgressBar
+              currentQuestionIndex={currentQuestionIndex}
+              quizLength={quizLength}
+            />
+            <img src={tacoImg} alt="taco" />
           </div>
-
         </>
       )}
     </>

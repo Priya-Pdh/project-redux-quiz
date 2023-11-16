@@ -2,6 +2,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { restart } from "../../reducers/quiz";
 import { useNavigate } from "react-router-dom";
 import { AnswersSummary } from "../../components/AnswersSummary/AnswersSummary";
+import "./SummaryPage.css";
+import pineappleImg from "../../assets/pineapple.png";
 
 export const SummaryPage = () => {
   const dispatch = useDispatch();
@@ -17,7 +19,6 @@ export const SummaryPage = () => {
       score -= 1;
     }
   });
- 
 
   const handleReload = () => {
     dispatch(restart());
@@ -25,15 +26,16 @@ export const SummaryPage = () => {
     navigate("/");
   };
   return (
-    <div>
+    <div className="summary-container">
       <p>
         Score: {score}/{answers.length}
-      </p>  
+      </p>
       {score === answers.length && <p>You Won! Congratulation 🥳</p>}
       {score >= 1 && score <= 4 && <p>Not Bad! Well done 👏</p>}
       {score <= 0 && <p>You lost! Try again. </p>}
-      {<AnswersSummary />}
+      <AnswersSummary />
       <button onClick={handleReload}>Restart Quiz</button>
+      <img src={pineappleImg} alt="pineapple" />
     </div>
   );
 };

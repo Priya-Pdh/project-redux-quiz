@@ -1,37 +1,92 @@
 .wrong-answer {
-    background-color: inherit;
-    animation: wrong 1s forwards;
+  background-color: inherit;
+  animation: wrong 1s forwards;
 }
 
 .correct-answer {
-    background-color: inherit;
-    animation: correct 1s forwards;
+  background-color: inherit;
+  animation: correct 1s forwards;
 }
 
 .corrected-answer {
-    background-color: inherit;
-    animation: correct 1s forwards;
-    animation-delay: 1s;
+  background-color: inherit;
+  animation: correct 1s forwards;
+  animation-delay: 1s;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.container h1 {
+  color: #154647;
+  font-family: "Philosopher", sans-serif;
+  font-weight: 900;
+  font-size: 30px;
+  margin: 40px 0 40px 0;
+}
+
+.container img {
+  width: 20%;
+  position: absolute;
+  left: 10%;
+  bottom: 10%;
+}
+
+.answer-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 35%;
+}
+
+.answer-buttons button {
+  border: none;
+  font-family: "Nunito", sans-serif;
+  background-color: #fdc776;
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+  padding: 2rem;
+  border-radius: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  width: 40%;
+}
+
+.submit-button {
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  width: 6rem;
+  color: #fff;
+  background-color: #eda4a4;
+  font-family: "Philosopher", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
 
 @keyframes correct {
-    from {
-        background-color: inherit;
-    }
+  from {
+    background-color: inherit;
+  }
 
-    to {
-        background-color: green;
-    }
+  to {
+    background-color: green;
+  }
 }
 
-
 @keyframes wrong {
-    from {
-        background-color: inherit;
-    }
+  from {
+    background-color: inherit;
+  }
 
-    to {
-        background-color: red;
-    }
+  to {
+    background-color: red;
+  }
 }

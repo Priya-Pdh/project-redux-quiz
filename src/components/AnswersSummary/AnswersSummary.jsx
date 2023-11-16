@@ -1,9 +1,10 @@
 import { useSelector } from "react-redux";
+import "./AnswersSummary.css";
 
 export const AnswersSummary = () => {
   const answers = useSelector((state) => state.quiz.answers);
   return (
-    <section>
+    <section className="answers-summary">
       <h2>Review your Answers 🧐</h2>
       {answers.map((answer, index) => (
         <div key={index}>
@@ -11,9 +12,9 @@ export const AnswersSummary = () => {
             Question {answer.question.id}: {answer.question.questionText}
           </p>
           {answer.isCorrect ? (
-            <p style={{ color: 'green' }}>✅</p>
+            <p style={{ color: "green" }}>✅</p>
           ) : (
-            <p style={{ color: 'red' }}>❌ Practice more!</p>
+            <p style={{ color: "red" }}>❌ Practice more!</p>
           )}
         </div>
       ))}

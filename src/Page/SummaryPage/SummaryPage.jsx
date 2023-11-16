@@ -27,14 +27,14 @@ export const SummaryPage = () => {
   };
   return (
     <div className="summary-container">
-      <p>
+      <p className="score-item">
         Score: {score}/{answers.length}
       </p>
-      {score === answers.length && <p>You Won! Congratulation 🥳</p>}
-      {score >= 1 && score <= 4 && <p>Not Bad! Well done 👏</p>}
-      {score <= 0 && <p>You lost! Try again. </p>}
+      {score === answers.length && <p className="score-item">You Won! Congratulation 🥳</p>}
+      {score >= 1 && score <= 4 && <p className="score-item">Not Bad! Well done 👏</p>}
+      {score <= 0 && <p className="score-item">You lost! Try again. </p>}
       <AnswersSummary />
-      <button onClick={handleReload}>Restart Quiz</button>
+      <button className="reload-button" onClick={handleReload}>Restart Quiz</button>
       <img src={pineappleImg} alt="pineapple" />
     </div>
   );

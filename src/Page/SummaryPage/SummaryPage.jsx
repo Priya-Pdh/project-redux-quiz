@@ -33,7 +33,7 @@ export const SummaryPage = () => {
       {score === answers.length && <p>You Won! Congratulation 🥳</p>}
       {score >= 1 && score <= 4 && <p>Not Bad! Well done 👏</p>}
       {score <= 0 && <p>You lost! Try again. </p>}
-      {<AnswersSummary />}
+      <AnswersSummary />
       <button onClick={handleReload}>Restart Quiz</button>
       <img src={pineappleImg} alt="pineapple" />
     </div>

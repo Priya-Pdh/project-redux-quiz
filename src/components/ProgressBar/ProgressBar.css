@@ -14,3 +14,41 @@
   border: 1px solid #ecdfd2;
   border-radius: 10px;
 }
+
+@media (min-width: 280px) and (max-width: 653px)  {
+  .progress-bar {
+    width: 80%;
+  }
+}
+
+@media (min-width: 360px) and (max-width: 740px) {
+  .progress-bar {
+    width: 90%;
+    margin-left: 15px;
+  }
+}
+@media (min-width: 375px) and (max-width: 667px) {
+  .progress-bar {
+    width: 80%;
+    margin-left: 20px;
+  }
+}
+@media (min-width: 414px) and (max-width: 896px) {
+  .progress-bar {
+    margin-top: 20px;
+  }
+}
+/* Tablet*/
+@media (min-width: 768px) and (max-width: 1024px){
+  .progress-bar {
+    margin-top: 60px;
+    margin-left: 20px;
+    
+  }
+   .progress-bar, .progress-bar-style {
+   height: 20px;
+   }
+   h4 {
+    font-size: 25px;
+   }
+}

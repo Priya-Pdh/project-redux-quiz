@@ -18,7 +18,7 @@ const ProgressBar = ({ currentQuestionIndex, quizLength }) => {
           ></div>
         }
       </div>
-      <h4>{quizLength - currentQuestionIndex}/6</h4>
+      <h4 className="progress-number">{quizLength - currentQuestionIndex}/6</h4>
     </div>
   );
 };

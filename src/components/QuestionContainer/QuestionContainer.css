@@ -19,6 +19,7 @@
   flex-direction: column;
   align-items: center;
   position: relative;
+  margin-top: 5rem;
 }
 
 .container h1 {
@@ -40,7 +41,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 35%;
+  width: 100%;
 }
 
 .answer-buttons button {
@@ -88,5 +89,196 @@
 
   to {
     background-color: red;
+  }
+}
+/* Media queries for responsiveness */
+@media (min-width: 280px) and (max-width: 653px) {
+  .container h1 {
+    font-size: 18px;
+    margin-left: 10px;
+    margin-top: 0;
+  }
+
+  .container img {
+    width: 30%;
+    left: 0;
+    top: 60%;
+  }
+
+  .answer-buttons button {
+    font-size: 15px;
+    padding: 1.2rem;
+  }
+
+  .submit-button {
+    font-size: 15px;
+    margin-top: 70px;
+    margin-bottom: 70px;
+  }
+}
+@media (min-width: 320px) and (max-width: 527px) {
+  .container h1 {
+    font-size: 20px;
+    margin-left: 20px;
+  }
+  .submit-button {
+    margin-bottom: 50px;
+  }
+}
+@media (min-width: 360px) and (max-width: 740px) {
+  .container h1 {
+    font-size: 25px;
+    margin-left: 25px;
+  }
+
+  .container img {
+    width: 28%;
+    left: 1%;
+  }
+  /* .answer-buttons {
+    width: 70%;
+    
+  } */
+
+  .answer-buttons button {
+    font-size: 20px;
+
+    padding: 1.2rem;
+  }
+
+  .submit-button {
+    font-size: 20px;
+    margin-bottom: 70px;
+  }
+}
+@media (min-width: 375px) and (max-width: 667px) {
+  .container h1 {
+    font-size: 20px;
+    margin-left: 50px;
+  }
+
+  .container img {
+    width: 25%;
+    left: 1%;
+  }
+  .answer-buttons {
+    width: 70%;
+  }
+
+  .answer-buttons button {
+    font-size: 17px;
+
+    padding: 1rem;
+  }
+
+  .submit-button {
+    font-size: 15px;
+    margin-bottom: 40px;
+  }
+}
+@media (min-width: 390px) and (max-width: 844px) {
+  .container h1 {
+    font-size: 28px;
+    margin-left: 25px;
+  }
+  .answer-buttons button {
+    font-size: 20px;
+    width: 41%;
+  }
+  .answer-buttons {
+    width: 75%;
+  }
+  .submit-button {
+    font-size: 20px;
+  }
+}
+@media (min-width: 414px) and (max-width: 896px) {
+  .container h1 {
+    font-size: 25px;
+  }
+  .answer-buttons button {
+    font-size: 22px;
+  }
+  .answer-buttons {
+    width: 75%;
+  }
+
+  .submit-button {
+    font-size: 20px;
+  }
+}
+@media (min-width: 430px) and (max-width: 932px) {
+  .container h1 {
+    font-size: 29px;
+  }
+  .answer-buttons button {
+    font-size: 22px;
+    width: 43%;
+  }
+
+  .submit-button {
+    font-size: 22px;
+  }
+}
+@media (min-width: 540px) and (max-width: 720px) {
+}
+
+/* Tablet*/
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container h1 {
+    font-size: 38px;
+    margin-left: 25px;
+    margin-bottom: 4rem;
+  }
+  .answer-buttons button {
+    font-size: 32px;
+    width: 35%;
+  }
+  .answer-buttons {
+    width: 80%;
+  }
+  .submit-button {
+    font-size: 30px;
+    width: 20%;
+    margin-bottom: 6rem;
+    margin-top: 5rem;
+  }
+  .container img {
+    width: 28%;
+    top: 70%;
+    left: 0;
+  }
+}
+@media (min-width: 820px) and (max-width: 1180px) {
+  .container h1 {
+    font-size: 41px;
+    /* margin-left: 25px; */
+    margin-bottom: 5rem;
+  }
+
+  .submit-button {
+    font-size: 38px;
+    width: 22%;
+  }
+}
+@media (min-width: 1367px) {
+  .container h1 {
+    font-size: 35px;
+    margin-left: 20px;
+  }
+  .answer-buttons button {
+    font-size: 23px;
+  }
+  .answer-buttons {
+    width: 35%;
+  }
+  .submit-button {
+    font-size: 20px;
+    width: 13%;
+  }
+  .container img {
+    width: 18%;
+    top: 40%;
+    left: 5%;
   }
 }

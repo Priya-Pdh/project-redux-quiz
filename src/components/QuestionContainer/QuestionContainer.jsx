@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { startQuiz, quiz, submitAnswer } from "../../reducers/quiz";
 
 import ProgressBar from "../ProgressBar/ProgressBar";
@@ -15,8 +15,9 @@ const QuestionContainer = () => {
   const [answerSelected, setAnswerSelected] = useState(false);
   const [correctAnswerClass, setCorrectAnswerClass] = useState("");
   const [timeOver, setTimeOver] = useState("");
-
   const [counter, setCounter] = useState(10);
+
+  const timer = useRef(null);
 
   const dispatch = useDispatch();
 
@@ -50,6 +51,9 @@ const QuestionContainer = () => {
       );
     }
 
+    // If user selects an answer, stop the timer.
+    clearTimeout(timer.current);
+
     if (selectedAnswerIndex === correctAnswer) {
       console.log("right answer", correctAnswer);
     } else {
@@ -64,7 +68,8 @@ const QuestionContainer = () => {
   }, [answerSelected]);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    // Timer for 10 seconds and counting down to 0 seconds on each question
+    timer.current = setTimeout(() => {
       if (counter > 0) {
         setCounter(counter - 1);
       }
@@ -77,13 +82,8 @@ const QuestionContainer = () => {
       setAnswer(null);
     }
 
-    // If user selects an answer, than the timer should stop at the second the user selects an answer.
-    if (answerSelected) {
-      clearTimeout(timer);
-    }
-
     return () => {
-      clearTimeout(timer);
+      clearTimeout(timer.current);
     };
   }, [counter]);
 
@@ -122,7 +122,9 @@ const QuestionContainer = () => {
         <>
           <div className="container">
             <h1>{currentQuestion.questionText}</h1>
-            <p> {counter} seconds remaining</p>
+            <p>
+              {counter} {counter === 1 ? "second" : "seconds"} remaining
+            </p>
             <p>{timeOver}</p>
             <div className="answer-buttons">
               {currentQuestion.options.map((option, index) => (

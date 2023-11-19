@@ -104,29 +104,6 @@
     font-size: 14px;
   }
 }
-/* @media (min-width: 414px) and (max-width: 896px)  {
-
-  .summary-container {
-    font-size: 14px;
-    
-    }
-    
-    
-    .summary-container img {
-      top: 33rem;
-      width: 13%;
-      
-    }
-  .score-item {
-    font-size: 8px;
-  }
-  .reload-button {
-    font-size: 8px;
-   
-  }
-  
-  
-} */
 @media (min-width: 412px) and (max-width: 915px) {
   .summary-container {
     font-size: 15px;

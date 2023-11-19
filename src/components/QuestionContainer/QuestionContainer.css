@@ -102,7 +102,7 @@
   .container img {
     width: 30%;
     left: 0;
-    top: 60%;
+    top: 65%;
   }
 
   .answer-buttons button {
@@ -134,11 +134,8 @@
   .container img {
     width: 28%;
     left: 1%;
+    top: 68%;
   }
-  /* .answer-buttons {
-    width: 70%;
-    
-  } */
 
   .answer-buttons button {
     font-size: 20px;
@@ -192,6 +189,14 @@
     font-size: 20px;
   }
 }
+@media (min-width: 412px) and (max-width: 915px) {
+  .container img {
+    width: 25%;
+    left: 0;
+    top: 68%;
+  }
+}
+
 @media (min-width: 414px) and (max-width: 896px) {
   .container h1 {
     font-size: 25px;
@@ -252,7 +257,6 @@
 @media (min-width: 820px) and (max-width: 1180px) {
   .container h1 {
     font-size: 41px;
-    /* margin-left: 25px; */
     margin-bottom: 5rem;
   }
 

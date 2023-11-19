@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState, useRef } from "react";
-import { quiz, submitAnswer } from "../../reducers/quiz";
+import { startQuiz, quiz, submitAnswer } from "../../reducers/quiz";
 
 import ProgressBar from "../ProgressBar/ProgressBar";
 import tacoImg from "../../assets/taco.png";
@@ -34,6 +34,13 @@ const QuestionContainer = () => {
   const quizOver = useSelector((state) => state.quiz.quizOver);
 
   const correctAnswer = currentQuestion.correctAnswerIndex;
+
+  //staring the quiz timer when the first questions mounts using useEffect
+  const timeState = useSelector((state) => state.quiz);
+
+  useEffect(() => {
+    dispatch(startQuiz());
+  }, [dispatch, timeState.currentQuestionIndex, timeState.quizStartTime]);
 
   const handleClick = (selectedAnswerIndex) => {
     if (!answerSelected) {
@@ -104,6 +111,8 @@ const QuestionContainer = () => {
       }
     }
   };
+
+  
 
   return (
     <>

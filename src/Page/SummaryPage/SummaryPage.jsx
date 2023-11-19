@@ -1,14 +1,28 @@
 import { useSelector, useDispatch } from "react-redux";
 import { restart } from "../../reducers/quiz";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AnswersSummary } from "../../components/AnswersSummary/AnswersSummary";
 import "./SummaryPage.css";
 import pineappleImg from "../../assets/pineapple.png";
 
+import { endQuiz, calculateTimeDifference } from "../../reducers/quiz";
+
 export const SummaryPage = () => {
   const dispatch = useDispatch();
   const answers = useSelector((state) => state.quiz.answers);
   const navigate = useNavigate();
+
+
+const totalTime = useSelector((state) => state.quiz.totalTime);
+
+useEffect(() => {
+  // Dispatch endQuiz action when the component mounts (summary page is rendered)
+  dispatch(endQuiz());
+  
+  // Dispatch calculateTimeDifference action to update totalTime
+  dispatch(calculateTimeDifference());
+}, [dispatch]);
 
   let score = 0;
   //calculate the score, if correct +1 and if incorrect -1
@@ -27,6 +41,7 @@ export const SummaryPage = () => {
   };
   return (
     <div className="summary-container">
+      <p className="score-item">Total Time: {totalTime} </p>
       <p className="score-item">
         Score: {score}/{answers.length}
       </p>

@@ -6,7 +6,7 @@
 
 # Redux Food Quiz
 
-Code buddies Naima Malik 👩🏻‍💻, Sarah Östehed 👩🏻‍💻, and Priya Pradhan 👩🏻‍💻 Technigo Group Project Week 7 - Nov 6th to Nov 12th 2023
+Code buddies Naima Malik 👩🏻‍💻, Sarah Östehed 👩🏻‍💻, and Priya Pradhan 👩🏻‍💻 Technigo Group Project Week 7 - Nov 13th to Nov 19th 2023
 
 Features:
 - A quiz application built in react

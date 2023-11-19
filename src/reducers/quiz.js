@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// Change these to your own questions!
 const questions = [
   {
     id: 1,
